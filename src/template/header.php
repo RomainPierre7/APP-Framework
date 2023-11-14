@@ -2,8 +2,8 @@
   <div class="logo">
     <?php
     $imagePaths = [
-      "../media/logo.png",
-      "media/logo.png"
+      "../assets/logo.png",
+      "assets/logo.png"
     ];
 
     $linkPaths = [
@@ -22,9 +22,9 @@
       }
     }
 
-    if ($existingImagePath == "../media/logo.png"){
+    if ($existingImagePath == "../assets/logo.png"){
       echo '<a href="../index.php"><img src="' . $existingImagePath . '" alt="Logo"></a>';
-    } else if ($existingImagePath == "media/logo.png") {
+    } else if ($existingImagePath == "assets/logo.png") {
       echo '<a href="index.php"><img src="' . $existingImagePath . '" alt="Logo"></a>';
     } else {
       echo '<p>No logo found</p>';

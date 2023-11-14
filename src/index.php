@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <title>App Name</title>
   <link href="css/styles.css" rel="stylesheet" />
-  <link rel="icon" href="media/logo.png" type="image/x-icon">
+  <link rel="icon" href="assets/logo.png" type="image/x-icon">
 </head>
 <body>
   <?php 
