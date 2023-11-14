@@ -1,0 +1,7 @@
+{
+    /* Accept PHP PostgreSQL functions */
+    "php.stubs": [
+        "*",
+        "pgsql"
+    ]
+}
