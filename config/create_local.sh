@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Root check
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
@@ -35,6 +37,13 @@ else
     sudo -u postgres psql -c "ALTER USER $APP_NAME WITH VALID UNTIL 'infinity';"
 fi
 
+# Create the connect_pg.php file
+CONNECT_PATH="$SCRIPT_DIR/../src/connect_database/"
+cp "$CONNECT_PATH/connect_pg_example.php" "$CONNECT_PATH/connect_pg.php"
+sed -i "/$login =/c\    \$login = '$APP_NAME';" "$CONNECT_PATH/connect_pg.php"
+sed -i "/$db_pwd =/c\    \$db_pwd = '$APP_NAME';" "$CONNECT_PATH/connect_pg.php"
+sed -i "/$db_name =/c\    \$db_name = '$APP_NAME';" "$CONNECT_PATH/connect_pg.php"
+
 # Chek if the app already exists
 if [ -d "/var/www/$APP_NAME" ]
 then
@@ -66,7 +75,6 @@ a2ensite $APP_NAME
 systemctl restart apache2
 
 # Put the app in the app folder
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SCRIPT_NAME="push_server.sh"
 SCRIPT_PATH="$SCRIPT_DIR/../$SCRIPT_NAME"
 
