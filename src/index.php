@@ -7,13 +7,13 @@
 </head>
 <body>
   <?php 
-    include "template/header.php";
+    include "templates/header.php";
     include "connect_database/connect_pg.php";
   ?>
 
   <!-- Your code here -->
 
-  <?php include "template/footer.php"; ?>
+  <?php include "templates/footer.php"; ?>
 
   <!-- Easy access to the database, useful for development (remove in production) -->
   <h2 class="dev">Development tools</h2>

@@ -1,6 +1,6 @@
 # Apache_PHP_PostgreSQL_Framework
 
-Ce framework permet de facilement déployer de manière locale un site web PHP sous Apache, relié à un serveur de base de données PostgreSQL.
+This framework enables the easy local deployment of a PHP website under Apache, connected to a PostgreSQL database server. In just a few seconds, everything is set up, leaving only the development tasks. A local server update script and an architectural skeleton are provided to streamline the development process.
 
 ## Procedure
 

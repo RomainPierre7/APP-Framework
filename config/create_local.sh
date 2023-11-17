@@ -40,9 +40,9 @@ fi
 # Create the connect_pg.php file
 CONNECT_PATH="$SCRIPT_DIR/../src/connect_database/"
 cp "$CONNECT_PATH/connect_pg_example.php" "$CONNECT_PATH/connect_pg.php"
-sed -i "/$login =/c\    \$login = '$APP_NAME';" "$CONNECT_PATH/connect_pg.php"
-sed -i "/$db_pwd =/c\    \$db_pwd = '$APP_NAME';" "$CONNECT_PATH/connect_pg.php"
-sed -i "/$db_name =/c\    \$db_name = '$APP_NAME';" "$CONNECT_PATH/connect_pg.php"
+sed -i "s/\$login\s*=/    \$login = '$APP_NAME';/" "$CONNECT_PATH/connect_pg.php"
+sed -i "s/\$db_pwd\s*=/    \$db_pwd = '$APP_NAME';/" "$CONNECT_PATH/connect_pg.php"
+sed -i "s/\$db_name\s*=/    \$db_name = '$APP_NAME';/" "$CONNECT_PATH/connect_pg.php"
 
 # Chek if the app already exists
 if [ -d "/var/www/$APP_NAME" ]
@@ -69,7 +69,7 @@ echo "<VirtualHost *:80>
 </VirtualHost>" > /etc/apache2/sites-available/$APP_NAME.conf
 
 # Enable the app site
-a2ensite $APP_NAME
+a2ensite $APP_NAME > /dev/null
 
 # Restart Apache
 systemctl restart apache2
@@ -83,5 +83,9 @@ sed -i "/^APP_NAME=/c\APP_NAME=\"$APP_NAME\"" "$SCRIPT_PATH"
 "$SCRIPT_PATH"
 
 # Terminal message
-echo "The app $APP_NAME is now available at http://$APP_NAME.local"
+echo ""
+echo "==============================="
+echo "The app $APP_NAME has been created"
+echo "Read the README.md file to know how to use the framework"
+echo "$APP_NAME is now available at http://$APP_NAME.local"
 echo "Use the push_server.sh script to push the app to the server"

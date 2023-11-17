@@ -7,7 +7,7 @@
 </head>
 <body>
   <?php
-  include "../template/header.php";
+  include "../templates/header.php";
   include "../connect_database/connect_pg.php";
 
   echo "<h1>Reset database</h1>";
