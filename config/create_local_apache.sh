@@ -12,7 +12,11 @@ apt install apache2 apache2-utils
 apt install php php-pgsql libapache2-mod-php
 
 # Enter the app name
+while read -r -t 0; do
+    read -r
+done
 read -p "Enter the new app name : " APP_NAME
+APP_NAME=$(echo $APP_NAME | tr '[:upper:]' '[:lower:]')
 
 # Create the database if it doesn't exist
 if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw $APP_NAME
@@ -36,6 +40,7 @@ if [ -d "/var/www/$APP_NAME" ]
 then
     echo "The app $APP_NAME already exists"
     echo "Please delete it before running this script (rm -rf /var/www/$APP_NAME)"
+    echo "If the site is already enabled try to go to http://$APP_NAME.local to access it"
     exit
 fi
 
@@ -43,7 +48,7 @@ fi
 mkdir /var/www/$APP_NAME
 
 # Add the app site to the hosts file
-echo "127.0.0.1 $APP_NAME.local" | cat - /etc/hosts > /etc/hosts
+printf "127.0.0.1\t%s.local\n" "$APP_NAME" | cat - /etc/hosts > temp && mv temp /etc/hosts
 
 # Create the app site
 echo "<VirtualHost *:80>
@@ -71,4 +76,4 @@ sed -i "/^APP_NAME=/c\APP_NAME=\"$APP_NAME\"" "$SCRIPT_PATH"
 
 # Terminal message
 echo "The app $APP_NAME is now available at http://$APP_NAME.local"
-echo " Use the push_server.sh script to push the app to the server"
+echo "Use the push_server.sh script to push the app to the server"
