@@ -2,7 +2,17 @@
 
 This framework enables the easy local deployment of a PHP website under Apache, connected to a PostgreSQL database server. In just a few seconds, everything is set up, leaving only the development tasks. A local server update script and an architectural skeleton are provided to streamline the development process.
 
-## Procedure
+
+## ✨ Key Features:
+
+* **Automated Local Server** : Set up your PHP development environment effortlessly with an integrated Apache server and PostgreSQL database.
+* **Effortless Initialization** : Start coding within seconds, no tedious server configurations needed.
+* **Architecture Skeleton** : Organize your projects efficiently with a clear and structured 'src' directory.
+* **Database Interaction** : Connect seamlessly to PostgreSQL databases with pre-configured files.
+* **Test Data Management** : Easily load or clear test data from the database via the web interface.
+* **Update and Deployment** : Push your latest changes quickly using the ```push_server.sh``` script.
+
+## ⚙️ Procedure
 
 ### Clone the template
 
@@ -29,7 +39,7 @@ Enter the application name when prompted by the script. **NOTE:** The app's name
 
 > Now you just have to develop ! Use ```./push_server.sh ``` to update your latest version on the site and quickly preview your development.
 
-## Skeleton Details
+## 📁 Skeleton Details
 
 The source folder **src** is divided into several parts:
 
