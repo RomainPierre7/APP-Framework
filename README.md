@@ -27,7 +27,7 @@ Enter the application name when prompted by the script. **NOTE:** The app's name
 * It configures the Apache server and updates the name resolution in /etc/hosts.
 * It provides the link where you can find your site.
 
-> Now you just have to develop! Use ```./push_server.sh ``` to update your latest version on the site and quickly preview your development.
+> Now you just have to develop ! Use ```./push_server.sh ``` to update your latest version on the site and quickly preview your development.
 
 ## Skeleton Details
 
