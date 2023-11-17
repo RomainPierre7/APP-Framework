@@ -10,7 +10,7 @@
   include "../templates/header.php";
   include "../connect_database/connect_pg.php";
 
-  echo "<h1>Reset database</h1>";
+  echo "<h1>Reset database to test data</h1>";
   echo "<div class='container'>";
 
   $sqlScript = file_get_contents('../sql/drop.sql');
@@ -28,6 +28,15 @@
     echo "create.sql script executed successfully";
   } else {
     echo "Error executing create.sql script : " . pg_last_error($connection);
+  }
+  echo "<br>";
+
+  $sqlScript = file_get_contents('../sql/insert.sql');
+  $result = pg_query($connection, $sqlScript);
+  if ($result) {
+    echo "insert.sql script executed successfully";
+  } else {
+    echo "Error executing insert.sql script : " . pg_last_error($connection);
   }
 
   pg_close($connection);
